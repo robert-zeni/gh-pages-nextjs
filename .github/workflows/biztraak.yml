@@ -212,7 +212,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build_ci-artifacts
-          path: .
+          path: out
       - name: Before Script 1
         run: pip install --no-cache-dir awscli
       - name: Before Script 2
