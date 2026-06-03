@@ -188,7 +188,7 @@ jobs:
     needs:
       - build_ci
     container:
-      image: amazon/aws-cli
+      image: python:3.12-bullseye
     env:
       CI_COMMIT_SHA: "${{ github.sha }}"
       CI_COMMIT_SHORT_SHA: "${{ github.sha }}"
@@ -213,6 +213,10 @@ jobs:
         with:
           name: build_ci-artifacts
           path: .
+      - name: Before Script 1
+        run: pip install --no-cache-dir awscli
+      - name: Before Script 2
+        run: aws --version
       - name: Script 1
         run: echo "Pushing Built Assets to CDN..."
       - name: Script 2
